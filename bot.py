@@ -7,8 +7,12 @@ async def randomemojigonderenfonksiyon(ctx):
     #await ctx.send(randomemoji())
     await ctx.send("yukarıdaki kod düzenlenmeli")
 
-
 @bot.command()
 async def gecikme(ctx):
     gecikme_ms = round(bot.latency * 1000)
     await ctx.send(f"Bot gecikmesi: {gecikme_ms}ms ⏱️")
+
+@bot.command()
+@commands.has_permissions(manage_messages=True)
+async def temizle(ctx, miktar: int = 5):
+    await ctx.channel.purge(limit=miktar + 1)
